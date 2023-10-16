@@ -9,6 +9,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 This project deploy via Netlify 
 [Live Demo](https://main--boisterous-tiramisu-947ca7.netlify.app/)
 
+### Tech Stack
+Typescript, React, Material UI, Redux, Redux Toolkit, React Virtualized
+
 ### `Features`
 *  We use react.js with Typescript for development
 *  The GitHub API is rate limited without an API key, how you handle this is up to you
