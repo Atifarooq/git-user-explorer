@@ -6,7 +6,6 @@ import {
   forkJoin,
   from,
   map,
-  mergeMap,
   of,
   startWith,
   switchMap,
@@ -45,7 +44,7 @@ class UserServiceSingleton {
 
   search(params: any): Observable<any> {
     return this.delayUntil().pipe(
-      mergeMap(() =>
+      switchMap(() =>
         HttpClient.get<any>(
           `${UserServiceSingleton._baseURL}/search/users`,
           {},
@@ -53,7 +52,7 @@ class UserServiceSingleton {
         )
       ),
       tap(({ headers }: any) => this.updateRateLimitHeaders(headers)),
-      mergeMap(({ resp }: any) => {
+      switchMap(({ resp }: any) => {
         const favoriteObservables: Observable<any>[] = resp.items.map(
           ({ id, login, name, avatar_url, bio }: any) =>
             favouritesService.favourite(id).pipe(
@@ -133,19 +132,13 @@ class UserServiceSingleton {
 
   private delayUntil(): Observable<any> {
     return defer(() => {
-      if (this.rateLimit.remaining && this.rateLimit.remaining - 1 <= 0) {
-        // Rate limit exceeded, wait until reset time
+      if (this.rateLimit.remaining == 0) {
         const delayTill: Date = new Date((this.rateLimit.reset || 0) * 1000);
-        if (delayTill) {
-          console.log(`Rate limit exceeded. Waiting for ${delayTill}.`);
-          return of(null).pipe(
-            delay(delayTill.getTime() - new Date().getTime()), // Calculate the delay in milliseconds
-            map(() => null)
-          );
-        }
-      }
-      return of(null);
-    }).pipe(switchMap(() => of(null))); // Flatten the observable and return an empty result
+        delayTill.setSeconds(delayTill.getSeconds() + 10);
+        return of({}).pipe(delay(delayTill));
+      } 
+      return of({});
+    });
   }
 }
 
