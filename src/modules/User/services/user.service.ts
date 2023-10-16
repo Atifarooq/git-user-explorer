@@ -78,16 +78,11 @@ class UserServiceSingleton {
   }
 
   private getRateLimit(): void {
-    HttpClient.get<IServerUser>(`${UserServiceSingleton._baseURL}/rate_limit`)
-      .subscribe((resp: any) => {
-        this.rateLimit = resp.resources.search;
-      })
-      .unsubscribe();
-    // .pipe(
-    //   tap(({ headers }: any) => this.updateRateLimitHeaders(headers)),
-    //   catchError(HttpClient.errorHandler)
-    // )
-    // .subscribe();
+    HttpClient.get<any>(
+      `${UserServiceSingleton._baseURL}/rate_limit`
+    ).subscribe(({ resp }: any) => {
+      this.rateLimit = resp.resources.search;
+    });
   }
 
   private transformUserData(data: IServerUser): IUser {

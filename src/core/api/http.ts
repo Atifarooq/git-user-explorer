@@ -10,8 +10,8 @@ class HttpClientSingleton {
       ...header,
     };
 
-    const queryParams = new URLSearchParams(params);
-    const path = queryParams ? `${url}?${queryParams.toString()}` : url;
+    const queryParams: any = new URLSearchParams(params);
+    const path = `${url}?${queryParams.toString()}`;
 
     return fromFetch(path, {
       method: "GET",
@@ -58,7 +58,9 @@ class HttpClientSingleton {
       headers[key] = value;
     });
 
-    return from(response.json()).pipe(map((resp: T) => ({ resp, headers }))) as Observable<T>;
+    return from(response.json()).pipe(
+      map((resp: T) => ({ resp, headers }))
+    ) as Observable<T>;
   }
 }
 
