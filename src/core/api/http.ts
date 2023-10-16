@@ -49,8 +49,8 @@ class HttpClientSingleton {
     }));
   }
 
-  private mapResponse<T>(response: Response): Observable<any> {
-    if (!response.ok) return this.errorHandler(response);
+  private mapResponse<T>(response: Response): Observable<T> {
+    if (!response.ok) return this.errorHandler(response) as Observable<T>;
 
     // Convert response headers to an object
     const headers: any = {};
@@ -58,7 +58,7 @@ class HttpClientSingleton {
       headers[key] = value;
     });
 
-    return from(response.json()).pipe(map((resp: any) => ({ resp, headers })));
+    return from(response.json()).pipe(map((resp: T) => ({ resp, headers }))) as Observable<T>;
   }
 }
 
