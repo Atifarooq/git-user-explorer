@@ -1,9 +1,32 @@
 # git-user-explorer
 Explore GitHub users via searching and check detail for any specific user
 
-![Thumbnail]([https://github.com/Atifarooq/ImageGallery/blob/master/public/IMG-2.PNG](https://github.com/Atifarooq/git-user-explorer/blob/main/public/thumbnail.png))
+![Thumbnail](https://github.com/Atifarooq/git-user-explorer/blob/main/public/thumbnail.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### `Features`
+*  We use react.js with Typescript for development
+*  The GitHub API is rate limited without an API key, how you handle this is up to you
+*  Apart from react.js use whatever libraries and architecture you like and think would be
+suitable to solve the case
+*  Provide the results via a git repo using a git provider of your choice (github, gitlab, self-
+hosted, …)
+
+### `Features: Spec Data Retrieval and Storage`
+*  Call the GitHub search API when there is a minimum of 3 characters entered in the text input
+field
+*  Data should update when the text input changes
+*  Store information of favorite status locally, so it can be used consistently in different views
+
+### `Features: Spec Data Display`
+*  Text input to enter queries to search for
+*  Listview which displays username and avatar
+    *  Paginate while scrolling (Infinite Loader)
+    *  Should support pull to refresh
+*  Clicking on an item should open a detail view showing some userdata you would like to
+display
+*  Possibility to mark users as favorites from list view and detail view
 
 ## Available Scripts
 
