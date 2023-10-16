@@ -11,7 +11,7 @@ class HttpClientSingleton {
     };
 
     const queryParams = new URLSearchParams(params);
-    const path = `${url}?${queryParams.toString()}`;
+    const path = queryParams ? `${url}?${queryParams.toString()}` : url;
 
     return fromFetch(path, {
       method: "GET",
