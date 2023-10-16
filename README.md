@@ -5,6 +5,10 @@ Explore GitHub users via searching and check detail for any specific user
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Demo
+This project deploy via Netlify 
+[Live Demo](https://main--boisterous-tiramisu-947ca7.netlify.app/)
+
 ### `Features`
 *  We use react.js with Typescript for development
 *  The GitHub API is rate limited without an API key, how you handle this is up to you
