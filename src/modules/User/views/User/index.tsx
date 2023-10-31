@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from "react";
 
 import ItemBox from "../../components/ItemBox";
-import { useRouteParams } from "../../../../hooks/useRouteParams";
-import FavouriteButton from "../../../../components/Favourite";
+import { useRouteParams } from "../../../../shared/hooks/useRouteParams";
+import FavouriteButton from "../../../../shared/components/Favourite";
 import {
   useAppDispatch,
   useAppSelector,

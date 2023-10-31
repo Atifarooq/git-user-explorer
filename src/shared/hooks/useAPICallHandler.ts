@@ -1,5 +1,5 @@
 import { useMemo, useReducer } from "react";
-import { Error } from "../core";
+import { Error } from "../../core";
 
 interface ServiceCallResult<T> extends APICallState<T> {
   dispatch: (...args: any) => void;

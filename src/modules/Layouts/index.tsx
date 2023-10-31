@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 import { AppBar, Box, CssBaseline, Container } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Topbar from "./components/Topbar";
-import TypeAhead from "../../components/TypeAhead";
-import useRouterData from "../../hooks/useRouterData";
+import TypeAhead from "../../shared/components/TypeAhead";
+import useRouterData from "../../shared/hooks/useRouterData";
 import { RouteData } from "../../types/route.type";
 
 type LayoutProps = {

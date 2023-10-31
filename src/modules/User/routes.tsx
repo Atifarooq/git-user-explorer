@@ -29,7 +29,7 @@ export const userRoutes: RouteObject[] = [
     id: "favourites",
     element: <FavouriteUsers />,
     loader: () => ({
-      name: "favourites",
+      name: "Favourites",
       searchBar: false,
     }),
   },

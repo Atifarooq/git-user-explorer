@@ -16,7 +16,7 @@ class HttpClientSingleton {
     return fromFetch(path, {
       method: "GET",
       headers,
-    }).pipe(switchMap(this.mapResponse)) as Observable<T>;
+    }).pipe(switchMap(this.mapResponse.bind(this))) as Observable<T>;
   }
 
   post<T>(
@@ -38,14 +38,14 @@ class HttpClientSingleton {
       method: "POST",
       headers,
       body,
-    }).pipe(switchMap(this.mapResponse)) as Observable<T>;
+    }).pipe(switchMap(this.mapResponse.bind(this))) as Observable<T>;
   }
 
   errorHandler(err: any): Observable<Error> {
     return throwError(() => ({
       error: true,
-      message: err.message,
-      status: `Error ${err.status}`,
+      message: err.message || 'Something went wrong',
+      status: err.status,
     }));
   }
 

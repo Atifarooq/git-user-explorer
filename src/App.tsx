@@ -10,6 +10,7 @@ export const BASE_URL = "/";
 const router = createBrowserRouter([
   {
     path: BASE_URL,
+    id: "root",
     element: <Layout />,
     children: [...userRoutes],
   },

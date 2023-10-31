@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useContext, useEffect } from "react";
 import InfiniteWindowScroller from "../../functions/withInfiniteScroll";
-import FavouriteButton from "../../../../components/Favourite";
+import FavouriteButton from "../../../../shared/components/Favourite";
 import { Typography } from "@mui/material";
 import { SearchContext } from "../../../Layouts";
 import { getPageNumber } from "../../helpers";
@@ -9,7 +9,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../../../core/redux-store/hooks";
-import { totalData, usersData, usersLoading } from "../../redux/users/selector";
+import { error, totalData, usersData, usersLoading } from "../../redux/users/selector";
 import {
   fetchUsers,
   resetUsers,

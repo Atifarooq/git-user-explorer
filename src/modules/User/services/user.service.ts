@@ -7,6 +7,7 @@ import {
   from,
   map,
   of,
+  retry,
   startWith,
   switchMap,
   tap,
@@ -72,7 +73,7 @@ class UserServiceSingleton {
         );
       }),
       startWith({ fetching: true }),
-      catchError(HttpClient.errorHandler)
+      catchError(HttpClient.errorHandler),
     );
   }
 
@@ -133,7 +134,7 @@ class UserServiceSingleton {
   private delayUntil(): Observable<any> {
     return defer(() => {
       if (this.rateLimit.remaining === 0) {
-        const delayTill: Date = new Date((this.rateLimit.reset || 0) * 1000);
+        const delayTill: Date = new Date(this.rateLimit.reset * 1000);
         delayTill.setSeconds(delayTill.getSeconds() + 10);
         return of({}).pipe(delay(delayTill));
       } 

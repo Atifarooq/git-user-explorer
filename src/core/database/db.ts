@@ -163,44 +163,6 @@ export class IndexedDBService<T> {
     );
   }
 
-  findAndUpdate(id: number, newData: Partial<T>): Observable<T> {
-    return this.openIndexedDB().pipe(
-      switchMap(() => {
-        const transaction = this.db!.transaction([this.storeName], "readwrite");
-        const objectStore = transaction.objectStore(this.storeName);
-
-        const getRequest = objectStore.get(id);
-
-        return fromEvent(getRequest, "success").pipe(
-          take(1),
-          switchMap((event: Event) => {
-            const existingData = (event.target as IDBRequest).result as
-              | T
-              | undefined;
-            if (existingData) {
-              // Merge existing data with new data
-              const updatedData = { ...existingData, ...newData };
-              const putRequest = objectStore.put(updatedData, id);
-
-              return fromEvent(putRequest, "success").pipe(
-                take(1),
-                map(() => updatedData), // Return the updated data
-                catchError((error) =>
-                  throwError(() => `Error updating data: ${error}`)
-                )
-              );
-            } else {
-              return throwError(() => `Data with ID ${id} not found`);
-            }
-          }),
-          catchError((error) =>
-            throwError(() => `Error finding data: ${error}`)
-          )
-        );
-      })
-    );
-  }
-
   getAll(page: number, pageSize: number): Observable<any> {
     return this.openIndexedDB().pipe(
       switchMap((db) => {

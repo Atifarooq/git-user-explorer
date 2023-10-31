@@ -2,8 +2,8 @@ import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
 import { Toolbar } from "@mui/material";
 
-import FavouriteButton from "../../../../components/Favourite";
-import useRouterData from "../../../../hooks/useRouterData";
+import FavouriteButton from "../../../../shared/components/Favourite";
+import useRouterData from "../../../../shared/hooks/useRouterData";
 import Breadcrumb from "../Breadcrumb";
 import { RouteData } from "../../../../types/route.type";
 import { USER_ROUTES } from "../../../User/types/user.type";

@@ -7,7 +7,7 @@ import {
   List as VirtualList,
 } from "react-virtualized";
 import ListBox from "../components/ListBox";
-import PullToRefresh from "../../../components/PullToRefresh";
+import PullToRefresh from "../../../shared/components/PullToRefresh";
 
 const withInfiniteLoader =
   (Component: React.ComponentType<any>) =>

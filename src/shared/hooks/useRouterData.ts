@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useMatches } from "react-router-dom";
-import { RouteInfo, RouteData } from "../types/route.type";
+import { RouteInfo, RouteData } from "../../types/route.type";
 
 const useRouterData = <T extends RouteData>(): T | undefined => {
   const match: RouteInfo<T>[] | null = useMatches() as RouteInfo<T>[] | null;

@@ -3,7 +3,7 @@ import InfiniteWindowScroller from "../../functions/withInfiniteScroll";
 import { Typography } from "@mui/material";
 import { getPageNumber } from "../../helpers";
 import { ITEM_HEIGHT, PAGE_SIZE } from "../../constants";
-import FavouriteButton from "../../../../components/Favourite";
+import FavouriteButton from "../../../../shared/components/Favourite";
 import {
   useAppDispatch,
   useAppSelector,
